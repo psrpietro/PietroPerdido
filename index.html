@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aprenda CSS Grid - Aula Prática</title>
+
+    <style>
+        /*  1. RESET BÁSICO E ESTILOS GERAIS */
+        * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    
+        }
+
+        body {
+        background-color: #f0f2f5;
+        color: #1c1e21;
+        padding: 20px;
+        }
+
+        /* Estilização dos Blocos do Layout */
+        header, nav, main, footer {
+        padding: 20px;
+        border-radius: 12px;
+        color: #ffffff;
+        font-weight: bold;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.1rem;
+        }
+
+        /* Cores distintas para destacar cada área do layout */
+        .header { background-color:#8B0000 }
+        .menu   { background: linear-gradient(135deg, #000000, #8f94fb); }
+        .main   { background-color: #ffffff; color: #000000; border: 2px dashed #cbd5e1; }
+        .footer { background-color:#8B0000}
+
+        /* Estilo dos cards que estarão DENTRO da tag <main> */
+        .card {
+        background-color: #e0e7ff;
+        color: #3730a3;
+        padding: 25px;
+        border-radius: 8px;
+        text-align: center;
+        font-weight: bold;
+        }
+
+        .layout-principal {
+            display: grid;
+            
+            grid-template-rows: auto 1fr auto;
+            grid-template-columns: 1fr 3fr;
+
+            gap: 15px;
+
+            grid-template-areas: 
+            "header header"
+            "main menu"
+            "footer footer";
+
+            min-height: calc(100vh - 40px);
+        }
+
+        .header {grid-area: header;}
+        .menu {grid-area: menu;}
+        .main {grid-area: main;}
+        .footer {grid-area: footer;}
+
+            .cards-grid {
+                display: grid;
+                width: 100%;
+
+                grid-template-columns: repeat(5, 1fr);
+                gap: 15px;
+
+    
+            }
+
+            .cards-grid  .card img{
+                width: 100px;
+            }
+
+    
+            
+
+            @media(max-width: 768px) {
+                .layout-principal {
+                    grid-template-columns: 1fr;
+
+                    grid-template-areas: none
+                    "header"
+                    "menu"
+                    "main"
+                    "footer";
+                }
+
+                .cards-grid {
+                    grid-template-columns: repeat(2, 1fr);
+                }
+            }
+
+            @media (max-widht: 480px) {
+                .cards-grid {
+                    grid-template-columns: 1fr;
+                }
+            }
+
+            .img0{
+                width: 100px;
+            }
+    </style>
+</head>
+
+<body>
+    <div class="layout-principal">
+        <header class="header">
+           <p>HARRY POTTER</p>
+        </header>
+
+        <nav class="menu">
+           <img class="img0" src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Coat_of_arms_Hogwarts.svg/500px-Coat_of_arms_Hogwarts.svg.png?utm_source=pt.wikiversity.org&utm_campaign=index&utm_content=thumbnail" alt="">
+        </nav>
+
+        <main>
+            <div class="cards-grid">
+                <div class="card"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQy2wvmrr7irzH5W579MkEHLam3_nhxG2Tsvoc9DSBFBJMc7BFmXGG4eHHZ&s=10" alt=""></div>
+                <div class="card"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSm3vvvwRPNU_gxGl5amSPN2CntsJogQuvn_Kz-gGlMAwVlvPio6hvPtNo&s=10" alt=""></div>
+                <div class="card"> <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRn7DKz19xzOBgFLCu7RE6Vh35-1EgPB0yWUja5zgzJYv6Puz6QuJ9qm8jk&s=10" alt=""></div>
+                <div class="card"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQLDvjpS1SVi1r_boLj5Gmu_mWP_D18Q_6dTjBExBUKFrzd-rrGUsIQqA&s=10" alt=""></div>
+                <div class="card"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQwyWho_Uhjtxe6Gytj0JdsUItnPyjkx-qx4DrO9bUeBBZndrY2aNdHEw&s=10" alt=""></div>
+                <div class="card"> <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT-cCU-boBcCRL_Q6hz3WfKg5_RiNJ6rYVjQWZmc41dSw&s=10" alt=""></div>
+                <div class="card"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSJykQcJ3pGOlWDRtB2x86pszURKjKvZKqwypbRAQqIxl94FIAazy3NEAGj&s=10" alt=""></div>
+                <div class="card"> <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQD_51maqng6wEealb4nJsdH5pvZo5HIgCWPJxVY6maDR4tzhl4iQ1oVM_4&s=10" alt=""></div> 
+                <div class="card"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSMc4a7QqO_5JqWhkVggKpP_TZddLszTXtzQiEgy0n8YbNpX4fSMXPIcZs6&s=10" alt=""></div>
+                <div class="card"><img src="https://static.wikia.nocookie.net/harrypotter/images/7/78/Lord_Voldemort.jpg/revision/latest?cb=20161009033218&path-prefix=pt-br" alt=""></div>
+                          
+            </div>     
+            </div>
+        </main>
+
+        <footer class="footer">
+            "Palavras são, na minha não tão humilde opinião, nossa fonte mais inesgotável de magia...
+        </footer>
+    </div>
+</body>
